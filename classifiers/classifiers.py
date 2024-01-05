@@ -25,7 +25,7 @@ def get_models(which_models):
             }
         },
         'svc': {
-            SVC(): {
+            SVC(probability=True): {
                 'C': [0.1, 1, 10],
                 'kernel': ['rbf', 'linear'],
                 # 'gamma': ['auto'],

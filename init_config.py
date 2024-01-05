@@ -15,10 +15,10 @@ def get_general_parameters(is_test):
         return {
             "features": [
                 # PARA Y DAYS FROM DEV TO TEST
-                ['storyPoints', 'polarity_mean', 'O', 'C', 'E', 'A', 'N'],
+                # ['storyPoints', 'polarity_mean', 'O', 'C', 'E', 'A', 'N'],
                 ['storyPoints', 'polarity_mean', 'stress_mean', 'O', 'C', 'E', 'A', 'N'],
-                ['storyPoints', 'polarity', 'O', 'C', 'E', 'A', 'N'],
-                ['storyPoints', 'polarity', 'stress', 'O', 'C', 'E', 'A', 'N'],
+                # ['storyPoints', 'polarity', 'O', 'C', 'E', 'A', 'N'],
+                # ['storyPoints', 'polarity', 'stress', 'O', 'C', 'E', 'A', 'N'],
 
                 # PARA Y STORY POINTS
                 # ['polarity_mean', 'O', 'C', 'E', 'A', 'N'],
@@ -44,8 +44,8 @@ def get_general_parameters(is_test):
             ],
             "smote_instances": [
                 # 1000,
-                3000,
-                # 5000
+                # 3000,
+                5000
             ],
             "scales": [
                 'no_scaled',

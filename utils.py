@@ -14,7 +14,7 @@ def get_random_state():
 
 
 def save_df_to_csv(df, dataset, inst, sca, count):
-    filename = 'best_models/2_5_5/best_models_' + dataset['train'] + '_' + str(inst) + '_instances_' + sca + '_' + str(count) + '.csv'
+    filename = 'best_models/2_5_5/no_scaled_5000_instances_f2_without_knn/best_models_' + dataset['train'] + '_' + str(inst) + '_instances_' + sca + '_' + str(count) + '.csv'
 
     df.to_csv(filename, index=None, sep=';', mode='w')
 
@@ -27,7 +27,7 @@ def save_best_model(result_df, dataset, inst, sca, count):
     for index, row in models.iterrows():
         m = row['Model']
 
-        filename = 'best_models/2_5_5/model_' + str(index + 1) + '_' + dataset['train'] + '_' + str(inst) + '_instances_' + sca + '_' + str(count) + '.pkl'
+        filename = 'best_models/2_5_5/no_scaled_5000_instances_f2_without_knn/model_' + str(index + 1) + '_' + dataset['train'] + '_' + str(inst) + '_instances_' + sca + '_' + str(count) + '.pkl'
 
         with open(filename, 'wb') as file:
             pickle.dump(m, file)

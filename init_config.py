@@ -14,13 +14,6 @@ def get_general_parameters(is_test):
         print("Executing in PROD mode...")
         return {
             "features": [
-<<<<<<< HEAD
-                # PARA Y DAYS FROM DEV TO TEST
-                # ['storyPoints', 'polarity_mean', 'O', 'C', 'E', 'A', 'N'],
-                ['storyPoints', 'polarity_mean', 'stress_mean', 'O', 'C', 'E', 'A', 'N'],
-                # ['storyPoints', 'polarity', 'O', 'C', 'E', 'A', 'N'],
-                # ['storyPoints', 'polarity', 'stress', 'O', 'C', 'E', 'A', 'N'],
-=======
                 # PARA Y DAYS FROM DEV TO TEST, TODAS OS BIG FIVE
                 # ['storyPoints', 'polarity_mean', 'O', 'C', 'E', 'A', 'N'],
                 # ['storyPoints', 'polarity_mean', 'stress_mean', 'O', 'C', 'E', 'A', 'N'],
@@ -50,7 +43,6 @@ def get_general_parameters(is_test):
                 ['storyPoints', 'polarity_mean', 'stress_mean', 'C'],
                 ['storyPoints', 'polarity', 'C'],
                 ['storyPoints', 'polarity', 'stress', 'C'],
->>>>>>> a2fd7ef7a398ba105ed3e3d2b8a8421eb102d722
 
                 # PARA Y STORY POINTS
                 # ['polarity_mean', 'O', 'C', 'E', 'A', 'N'],
@@ -75,15 +67,10 @@ def get_general_parameters(is_test):
                 }
             ],
             "smote_instances": [
-<<<<<<< HEAD
-                # 1000,
-                # 3000,
-=======
                 250,
                 500,
                 1000,
                 3000,
->>>>>>> a2fd7ef7a398ba105ed3e3d2b8a8421eb102d722
                 5000
             ],
             "scales": [

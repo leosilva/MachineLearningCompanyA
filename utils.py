@@ -4,7 +4,7 @@ import pickle
 import os
 
 
-execution = "without_grid_search_c"
+# execution = "without_grid_search_c"
 
 
 def perform_grid_search(model, params, cv, X_train_selected, y_train_cv):
@@ -19,15 +19,15 @@ def get_random_state():
 
 def save_df_to_csv(df, dataset, inst):
 
-    if not os.path.exists('best_models/' + execution):
-        os.makedirs('best_models/' + execution)
+    if not os.path.exists('best_models/feb/'):
+        os.makedirs('best_models/feb/')
 
-    filename = 'best_models/' + execution + '/best_models_' + dataset['train'] + '_' + str(inst) + '_instances.csv'
+    filename = 'best_models/feb/' + dataset['train'] + '_' + str(inst) + '_instances.csv'
 
     df.to_csv(filename, index=None, sep=',', mode='w')
 
 
-def save_best_model(result_df, dataset, inst, sca, count):
+def save_best_model(result_df, dataset, inst, sca):
     filename = ''
     result_df = result_df.reset_index()
     models = result_df.head(10)
@@ -35,7 +35,7 @@ def save_best_model(result_df, dataset, inst, sca, count):
     for index, row in models.iterrows():
         m = row['Model']
 
-        filename = 'best_models/1_5_5/model_' + str(index + 1) + '_' + dataset['train'] + '_' + str(inst) + '_instances_' + sca + '_' + str(count) + '.pkl'
+        filename = 'best_models/feb/model_' + str(index + 1) + '_' + dataset['train'] + '_' + str(inst) + '_instances_' + sca + '.pkl'
 
         with open(filename, 'wb') as file:
             pickle.dump(m, file)

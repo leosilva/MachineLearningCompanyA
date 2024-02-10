@@ -47,7 +47,6 @@ def run(is_test, is_balance, which_models):
 
                 features = param_dict['features']
 
-                # count = 0
                 for feat in features:
                     X = pd.DataFrame(data_train[feat])
                     y = pd.DataFrame(data_train['daysFromDevOrFixToTest_categories'])
@@ -105,16 +104,16 @@ def run(is_test, is_balance, which_models):
 
                             gc.collect()
 
-                            # grid_search = ut.perform_grid_search(model, hyperparams, cv, X_train, y_train)
-                            model = model.fit(X_train, y_train.astype('int').values.ravel())
+                            grid_search = ut.perform_grid_search(model, hyperparams, cv, X_train, y_train)
+                            # model = model.fit(X_train, y_train.astype('int').values.ravel())
                             end = time.time()
-                            # best_model = grid_search.best_estimator_
+                            best_model = grid_search.best_estimator_
                             print("Training time: {}".format(end - start))
 
                             gc.collect()
 
                             start = time.time()
-                            metrics = cross_validate(estimator=model,
+                            metrics = cross_validate(estimator=best_model,
                                                      X=X_train,
                                                      y=y_train.astype('int').values.ravel(),
                                                      cv=cv,
@@ -124,10 +123,10 @@ def run(is_test, is_balance, which_models):
                             end = time.time()
                             print("Cross validate time: {}".format(end - start))
 
-                            test_predictions = model.predict(X_test)
+                            test_predictions = best_model.predict(X_test)
                             class_report_dict_test = classification_report(y_test.astype('int'), test_predictions, output_dict=True)
 
-                            val_predictions = model.predict(X_val)
+                            val_predictions = best_model.predict(X_val)
                             class_report_dict_val = classification_report(y_val.astype('int'), val_predictions,
                                                                       output_dict=True)
 
@@ -157,8 +156,8 @@ def run(is_test, is_balance, which_models):
                             result_map["Scale"].append(sca)
                             result_map["Features"].append(feat)
                             result_map["Folds"].append(f)
-                            # result_map["Hyper Params."].append(grid_search.best_params_)
-                            result_map["Model"].append(model)
+                            result_map["Hyper Params."].append(grid_search.best_params_)
+                            result_map["Model"].append(best_model)
                             pd.set_option('display.max_colwidth', None)
                             pd.set_option('display.max_columns', None)
                             temp_df = pd.DataFrame(result_map)
@@ -170,9 +169,7 @@ def run(is_test, is_balance, which_models):
             result_df.sort_values(by='Val. F1 Score', ascending=False, inplace=True)
 
             ut.save_df_to_csv(result_df, d, inst)
-                    # ut.save_best_model(result_df, d, inst, sca, count)
-
-                    # count = count + 1
+            ut.save_best_model(result_df, d, inst, sca)
 
     utc_dtf = datetime.now(timezone.utc)
     print("GENERAL ANALYSIS ending at {}".format(utc_dtf.astimezone().isoformat()))

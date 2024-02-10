@@ -39,10 +39,16 @@ def get_general_parameters(is_test):
                 # ['storyPoints', 'polarity', 'stress', 'A'],
 
                 # PARA Y DAYS FROM DEV TO TEST, SOMENTE COM C
-                ['storyPoints', 'polarity_mean', 'C'],
-                ['storyPoints', 'polarity_mean', 'stress_mean', 'C'],
-                ['storyPoints', 'polarity', 'C'],
-                ['storyPoints', 'polarity', 'stress', 'C'],
+                # ['storyPoints', 'polarity_mean', 'C'],
+                # ['storyPoints', 'polarity_mean', 'stress_mean', 'C'],
+                # ['storyPoints', 'polarity', 'C'],
+                # ['storyPoints', 'polarity', 'stress', 'C'],
+
+                # PARA Y DAYS FROM DEV TO TEST, SOMENTE COM E
+                # ['storyPoints', 'polarity_mean', 'E'],
+                # ['storyPoints', 'polarity_mean', 'stress_mean', 'E'],
+                # ['storyPoints', 'polarity', 'E'],
+                ['storyPoints', 'polarity', 'stress', 'E'],
 
                 # PARA Y STORY POINTS
                 # ['polarity_mean', 'O', 'C', 'E', 'A', 'N'],
@@ -58,12 +64,8 @@ def get_general_parameters(is_test):
             "folds": [10],
             "datasets": [
                 {
-                    'train': 'dataset_survey_tasks_train_1_5_5',
-                    'val': 'dataset_survey_tasks_test_1_5_5'
-                },
-                {
-                    'train': 'dataset_survey_tasks_train_2_5_5',
-                    'val': 'dataset_survey_tasks_test_2_5_5'
+                    'train': 'dataset_survey_tasks_train',
+                    'val': 'dataset_survey_tasks_test'
                 }
             ],
             "smote_instances": [
@@ -105,7 +107,7 @@ def get_result_map():
         "Features": [],
         "Folds": [],
         # "Feat. Selec. Strategy": [],
-        # "Hyper Params.": [],
+        "Hyper Params.": [],
         "Model": []
     }
     return result_map
